@@ -1,9 +1,9 @@
-import { defineStore } from 'pinia'
-import {ApiConsumer} from "@/services/ApiConsumer";
+import { defineStore } from 'pinia';
+import { ApiConsumer } from '@/services/ApiConsumer';
 
 interface User {
-  id: number,
-  email: string
+  id: number;
+  email: string;
 }
 
 type UserRootState = {
@@ -12,15 +12,16 @@ type UserRootState = {
 
 export const useUserStore = defineStore({
   id: 'user',
-  state: () => ({
-    user: null
-  } as UserRootState),
+  state: () =>
+    ({
+      user: null
+    } as UserRootState),
   getters: {
-    isLogged: (state) => state.user !== null,
+    isLogged: (state) => state.user !== null
   },
   actions: {
     async refreshUser() {
-      const data = (await ApiConsumer.get("user")) as {
+      const data = (await ApiConsumer.get('user')) as {
         user: User;
         token: string;
       };
@@ -30,17 +31,15 @@ export const useUserStore = defineStore({
     async autoLogin() {
       if (this.user) return;
       try {
-        const token = localStorage.getItem("token")
+        const token = localStorage.getItem('token');
         if (token) {
-          ApiConsumer.setToken(
-            token
-          );
-          const data = (await ApiConsumer.get("")) as {
+          ApiConsumer.setToken(token);
+          const data = (await ApiConsumer.get('')) as {
             user: User;
           };
           this.user = data.user;
         } else {
-          throw new Error('no token')
+          throw new Error('no token');
         }
       } catch (e) {
         this.user = null;
@@ -50,17 +49,17 @@ export const useUserStore = defineStore({
       }
     },
     async login(email: string, password: string) {
-      const data = (await ApiConsumer.post("login", {
+      const data = (await ApiConsumer.post('login', {
         email,
-        password,
+        password
       })) as { user: User; token: string };
       this.user = data.user;
       ApiConsumer.setToken(data.token);
     },
     async register(email: string, password: string) {
-      const data = (await ApiConsumer.post("register", {
+      const data = (await ApiConsumer.post('register', {
         email,
-        password,
+        password
       })) as { user: User; token: string };
       this.user = data.user;
       ApiConsumer.setToken(data.token);
@@ -68,6 +67,6 @@ export const useUserStore = defineStore({
     async logout() {
       this.user = null;
       ApiConsumer.removeToken();
-    },
-  },
-})
+    }
+  }
+});

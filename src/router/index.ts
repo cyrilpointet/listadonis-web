@@ -1,8 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import type { RouteLocationNormalized } from "vue-router";
+import { createRouter, createWebHistory } from 'vue-router';
+import type { RouteLocationNormalized } from 'vue-router';
 
-import HomeView from '../views/HomeView.vue'
-import {useUserStore} from "@/stores/user";
+import HomeView from '../views/HomeView.vue';
+import { useUserStore } from '@/stores/user';
 
 async function autoLog(
   to: RouteLocationNormalized,
@@ -18,7 +18,7 @@ async function autoLog(
       return;
     } catch {
       userStore.logout();
-      next({ path: "/login" });
+      next({ path: '/login' });
       return;
     }
   } else {
@@ -33,7 +33,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      beforeEnter: [autoLog],
+      beforeEnter: [autoLog]
     },
     {
       path: '/login',
@@ -49,6 +49,6 @@ const router = createRouter({
       component: () => import('../views/RegisterView.vue')
     }
   ]
-})
+});
 
-export default router
+export default router;
