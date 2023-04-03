@@ -4,6 +4,21 @@ import router from '@/router';
 
 const userStore = useUserStore();
 
+const formSchema = [
+  {
+    $formkit: 'text',
+    name: 'email',
+    label: 'Email',
+    validation: 'required|email'
+  },
+  {
+    $formkit: 'password',
+    name: 'password',
+    label: 'Mot de passe',
+    validation: 'required|length:8,16'
+  }
+];
+
 async function submit(fields): Promise<void> {
   try {
     await userStore.register(fields.email, fields.password);
@@ -16,20 +31,6 @@ async function submit(fields): Promise<void> {
 
 <template>
   <FormKit type="form" @submit="submit">
-    <FormKit
-        type="text"
-        name="email"
-        id="email"
-        label="Email"
-        placeholder="moi@moi.moi"
-        validation="required|email"
-    />
-    <FormKit
-        type="password"
-        name="password"
-        id="password"
-        label="Mot de passe"
-        validation="length:8,16"
-    />
+    <FormKitSchema :schema="formSchema" />
   </FormKit>
 </template>

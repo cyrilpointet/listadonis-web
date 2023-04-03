@@ -14,8 +14,8 @@ const logout = () => {
 
 <template>
   <div>
-    <h1>Home</h1>
-    <h2>Hello {{ name }}</h2>
-    <button @click="logout">logout</button>
+    <h1 class="mb-2 text-xl">Home</h1>
+    <p class="mb-2">Hello {{ name }}</p>
+    <FormKit type="button" label="Déconnexion" @click="logout" />
   </div>
 </template>
