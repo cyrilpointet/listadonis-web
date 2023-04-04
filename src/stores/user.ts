@@ -1,9 +1,17 @@
 import { defineStore } from 'pinia';
 import { ApiConsumer } from '@/services/ApiConsumer';
 
+export interface UserBand {
+  id: number;
+  name: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
 interface User {
   id: number;
   email: string;
+  bands: UserBand[];
 }
 
 type UserRootState = {
@@ -67,6 +75,11 @@ export const useUserStore = defineStore({
     async logout() {
       this.user = null;
       ApiConsumer.removeToken();
+    },
+
+    async createBand(name: string) {
+      const resp = (await ApiConsumer.post('band', { name })) as { band: UserBand };
+      this.user?.bands.push(resp.band);
     }
   }
 });
