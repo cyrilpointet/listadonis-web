@@ -47,6 +47,12 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: () => import('../views/RegisterView.vue')
+    },
+    {
+      path: '/band/:id',
+      name: 'band',
+      component: () => import('../views/BandView.vue'),
+      beforeEnter: [autoLog]
     }
   ]
 });

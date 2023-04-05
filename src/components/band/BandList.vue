@@ -8,8 +8,13 @@ const props = defineProps<{
 
 <template>
   <div>
-    <div v-for="(band, index) in bands" :key="index" class="py-2 border-t last:border-b">
+    <RouterLink
+      v-for="(band, index) in bands"
+      :key="index"
+      :to="`/band/${band.id}`"
+      class="py-2 border-t last:border-b block w-full"
+    >
       <p>{{ band.name }}</p>
-    </div>
+    </RouterLink>
   </div>
 </template>

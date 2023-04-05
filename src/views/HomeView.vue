@@ -10,8 +10,6 @@ const name = userStore.$state.user?.email.split('@')[0] || 'unknown';
 
 const bands = userStore.$state.user?.bands || [];
 
-console.log(bands);
-
 const logout = () => {
   router.push('/login');
   userStore.logout();
