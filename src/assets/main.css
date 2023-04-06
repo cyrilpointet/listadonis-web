@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+button .formkit-icon svg {
+    max-width: none !important;
+    max-height: none !important;
+}

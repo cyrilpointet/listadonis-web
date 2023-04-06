@@ -103,6 +103,15 @@ export const useUserStore = defineStore({
       });
       this.user.bands = bands;
     },
+    async deleteBand() {
+      if (!this.band || !this.user) return;
+      await ApiConsumer.delete(`band/${this.band.id}`);
+      const bands = this.user.bands.filter((elem) => {
+        return elem.id !== this.band.id;
+      });
+      this.user.bands = bands;
+      this.band = null;
+    },
     resetBand() {
       this.band = null;
     }

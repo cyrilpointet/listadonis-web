@@ -30,10 +30,11 @@ async function submit(fields) {
         id="name"
         validation="required|length:1,32"
         outer-class="flex-1 !mb-0"
+        label="Nouvelle liste"
       />
-      <button type="submit" class="flex items-center justify-center bg-primary p-2 rounded-full">
-        <FormKitIcon icon="add" class="text-white w-6 h-6 block" />
-      </button>
+      <FormKit type="submit" label="Supprimer" input-class="!p-2 !mt-5 !mr-0">
+        <FormKitIcon icon="add" class="text-white !w-6 !h-6" svg-class="!max-w-full" />
+      </FormKit>
     </div>
   </FormKit>
 </template>

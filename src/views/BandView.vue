@@ -3,6 +3,9 @@ import { onBeforeMount, onUnmounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRoute, useRouter } from 'vue-router';
 
+import BandEditor from '@/components/band/BandEditor.vue';
+import BandDelete from '@/components/band/BandDelete.vue';
+
 import { useUserStore } from '@/stores/user';
 
 const route = useRoute();
@@ -28,14 +31,6 @@ async function init() {
     router.push({ name: 'home' });
   }
 }
-
-async function submit(fields) {
-  try {
-    await userStore.updateBand(fields.name);
-  } catch (e) {
-    alert('Error');
-  }
-}
 </script>
 
 <template>
@@ -46,15 +41,9 @@ async function submit(fields) {
     <div v-else class="mb-4">
       <h1 class="text-xl mb-4">{{ band.name }}</h1>
 
-      <FormKit type="form" id="myForm" @submit="submit">
-        <FormKit
-          type="text"
-          name="name"
-          id="name"
-          :value="band.name"
-          validation="required|length:1,32"
-        />
-      </FormKit>
+      <BandEditor />
+
+      <BandDelete />
 
       <h4 class="mb-1">Membres</h4>
       <div v-for="(user, index) in band.users" :key="index" class="py-2 border-t last:border-b">
