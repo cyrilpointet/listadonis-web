@@ -80,6 +80,7 @@ export const useUserStore = defineStore({
       ApiConsumer.removeToken();
     },
 
+    // Band -------------------------------------------------
     async createBand(name: string) {
       const resp = (await ApiConsumer.post('band', { name })) as { band: UserBand };
       this.user?.bands.push(resp.band);
@@ -114,6 +115,30 @@ export const useUserStore = defineStore({
     },
     resetBand() {
       this.band = null;
+    },
+
+    // Members -------------------------------------------------
+    async addMember(email: string) {
+      if (!this.band || !this.user) return;
+      const resp = (await ApiConsumer.post(`band/${this.band.id}/addMember`, {
+        email
+      })) as { band: Band };
+      this.band = resp.band;
+    },
+    async removeMember(memberId: number) {
+      if (!this.band || !this.user) return;
+      const resp = (await ApiConsumer.post(`band/${this.band.id}/removeMember`, {
+        memberId
+      })) as { band: Band };
+      if (memberId === this.user.id) {
+        const bands = this.user.bands.filter((elem) => {
+          return elem.id !== this.band.id;
+        });
+        this.user.bands = bands;
+        this.band = null;
+      } else {
+        this.band = resp.band;
+      }
     }
   }
 });

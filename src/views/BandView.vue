@@ -5,6 +5,8 @@ import { useRoute, useRouter } from 'vue-router';
 
 import BandEditor from '@/components/band/BandEditor.vue';
 import BandDelete from '@/components/band/BandDelete.vue';
+import MemberList from '@/components/member/MemberList.vue';
+import MemberAdd from '@/components/member/MemberAdd.vue';
 
 import { useUserStore } from '@/stores/user';
 
@@ -42,13 +44,9 @@ async function init() {
       <h1 class="text-xl mb-4">{{ band.name }}</h1>
 
       <BandEditor />
-
       <BandDelete />
-
-      <h4 class="mb-1">Membres</h4>
-      <div v-for="(user, index) in band.users" :key="index" class="py-2 border-t last:border-b">
-        <p>{{ user.email }}</p>
-      </div>
+      <MemberList />
+      <MemberAdd />
     </div>
 
     <RouterLink to="/">Home</RouterLink>
