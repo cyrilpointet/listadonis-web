@@ -7,12 +7,20 @@ interface User {
   bands: UserBand[];
 }
 
+interface Post {
+  id: number;
+  title: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
 interface Band {
   id: number;
   name: string;
   created_at: Date;
   updated_at: Date;
   users: Omit<User, 'bands'>;
+  posts: Post[];
 }
 
 export type UserBand = Omit<Band, 'users'>;
@@ -139,6 +147,23 @@ export const useUserStore = defineStore({
       } else {
         this.band = resp.band;
       }
+    },
+
+    // Posts -------------------------------------------------------
+    async addPost(title: string) {
+      if (!this.band) return;
+      const resp = (await ApiConsumer.post(`band/${this.band.id}`, {
+        title
+      })) as { post: Post };
+      const posts = this.band.posts;
+      posts.push(resp.post);
+      this.band.posts = posts;
+    },
+    async removePost(postId: number) {
+      if (!this.band) return;
+      await ApiConsumer.delete(`band/${this.band.id}/${postId}`);
+      const posts = this.band.posts;
+      this.band.posts = posts.filter((elem) => elem.id !== postId);
     }
   }
 });

@@ -7,6 +7,8 @@ import BandEditor from '@/components/band/BandEditor.vue';
 import BandDelete from '@/components/band/BandDelete.vue';
 import MemberList from '@/components/member/MemberList.vue';
 import MemberAdd from '@/components/member/MemberAdd.vue';
+import PostList from '@/components/post/PostList.vue';
+import PostAdd from '@/components/post/PostAdd.vue';
 
 import { useUserStore } from '@/stores/user';
 
@@ -45,8 +47,12 @@ async function init() {
 
       <BandEditor />
       <BandDelete />
+
       <MemberList />
       <MemberAdd />
+
+      <PostList />
+      <PostAdd />
     </div>
 
     <RouterLink to="/">Home</RouterLink>
