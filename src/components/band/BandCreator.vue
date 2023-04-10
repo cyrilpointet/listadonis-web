@@ -2,6 +2,7 @@
 import { FormKitIcon } from '@formkit/vue';
 import { reset } from '@formkit/core';
 import { useUserStore } from '@/stores/user';
+import ButtonIcon from '@/components/common/ButtonIcon.vue';
 
 const userStore = useUserStore();
 
@@ -31,10 +32,9 @@ async function submit(fields) {
         validation="required|length:1,32"
         outer-class="flex-1 !mb-0"
         label="Nouvelle liste"
+        placeholder="Nom"
       />
-      <FormKit type="submit" label="Supprimer" input-class="!p-2 !mt-5 !mr-0">
-        <FormKitIcon icon="add" class="text-white !w-6 !h-6" svg-class="!max-w-full" />
-      </FormKit>
+      <ButtonIcon type="submit" icon="add" class="mt-6" />
     </div>
   </FormKit>
 </template>

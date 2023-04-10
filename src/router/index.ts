@@ -18,7 +18,7 @@ async function autoLog(
       return;
     } catch {
       userStore.logout();
-      next({ path: '/login' });
+      next({ path: '/register' });
       return;
     }
   } else {
