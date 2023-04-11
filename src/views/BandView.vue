@@ -9,6 +9,7 @@ import MemberList from '@/components/member/MemberList.vue';
 import MemberAdd from '@/components/member/MemberAdd.vue';
 import PostList from '@/components/post/PostList.vue';
 import PostAdd from '@/components/post/PostAdd.vue';
+import Card from '@/components/common/Card.vue';
 
 import { useUserStore } from '@/stores/user';
 
@@ -38,7 +39,7 @@ async function init() {
 </script>
 
 <template>
-  <div>
+  <Card>
     <div v-if="!userStore.$state.band">
       <p>loading</p>
     </div>
@@ -54,7 +55,5 @@ async function init() {
       <PostList />
       <PostAdd />
     </div>
-
-    <RouterLink to="/">Home</RouterLink>
-  </div>
+  </Card>
 </template>

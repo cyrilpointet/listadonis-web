@@ -26,6 +26,9 @@ app.use(
         },
         'family:button': {
           input: '!bg-primary'
+        },
+        form: {
+          messages: 'hidden'
         }
       })
     }

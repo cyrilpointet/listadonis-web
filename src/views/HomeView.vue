@@ -3,6 +3,7 @@ import router from '@/router';
 import { useUserStore } from '@/stores/user';
 import BandList from '@/components/band/BandList.vue';
 import BandCreator from '@/components/band/BandCreator.vue';
+import Card from '@/components/common/Card.vue';
 
 const userStore = useUserStore();
 
@@ -12,7 +13,7 @@ const bands = userStore.$state.user?.bands || [];
 </script>
 
 <template>
-  <div>
+  <Card>
     <h1 class="mb-4 text-xl font-bold">Mes listes</h1>
 
     <BandList :bands="bands" class="mb-4" />
@@ -20,5 +21,5 @@ const bands = userStore.$state.user?.bands || [];
     <div class="mb-4">
       <BandCreator class="mb-4" />
     </div>
-  </div>
+  </Card>
 </template>
