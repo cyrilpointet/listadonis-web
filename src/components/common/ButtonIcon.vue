@@ -1,12 +1,13 @@
 <script setup lang="ts">
 const props = defineProps<{
   icon: string;
-  variant?: 'primary' | 'neutral';
+  variant?: 'primary' | 'neutral' | 'danger';
   type?: 'button' | 'submit' | 'reset';
 }>();
 
 const classes = {
   primary: 'bg-primary text-white hover:bg-primary-dark',
+  danger: 'bg-red-600 text-white hover:bg-red-800',
   neutral: 'bg-white text-black hover:bg-neutral-200'
 };
 

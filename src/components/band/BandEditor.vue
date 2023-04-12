@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 
+import ButtonIcon from '@/components/common/ButtonIcon.vue';
+
 import { useUserStore } from '@/stores/user';
 
 const userStore = useUserStore();
@@ -16,13 +18,20 @@ async function submit(fields) {
 </script>
 
 <template>
-  <FormKit type="form" id="myForm" @submit="submit">
-    <FormKit
-      type="text"
-      name="name"
-      id="name"
-      :value="band.name"
-      validation="required|length:1,32"
-    />
-  </FormKit>
+  <div>
+    <FormKit type="form" id="myForm" @submit="submit" :actions="false">
+      <div class="flex w-full items-start gap-4">
+        <FormKit
+          type="text"
+          name="name"
+          id="name"
+          :value="band.name"
+          validation="required|length:1,32"
+          label="Renommer la liste"
+          outer-class="flex-1 !mb-0"
+        />
+        <ButtonIcon type="submit" icon="done" class="mt-6" />
+      </div>
+    </FormKit>
+  </div>
 </template>

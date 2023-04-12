@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia';
-
 import { useUserStore } from '@/stores/user';
 import { reset } from '@formkit/core';
+
+import ButtonIcon from '@/components/common/ButtonIcon.vue';
 
 const userStore = useUserStore();
 async function submit(fields) {
@@ -22,7 +22,18 @@ async function submit(fields) {
     submit-label="Ajouter un item"
     @submit="submit"
     :config="{ validationVisibility: 'submit' }"
+    :actions="false"
   >
-    <FormKit type="text" name="item" id="MemberAdd.vue" validation="required" label="Titre" />
+    <div class="flex w-full items-start gap-4">
+      <FormKit
+        type="text"
+        name="item"
+        id="MemberAdd.vue"
+        validation="required"
+        outer-class="flex-1 !mb-0"
+        placeholder="Produit"
+      />
+      <ButtonIcon type="submit" icon="add" class="mt-1" />
+    </div>
   </FormKit>
 </template>

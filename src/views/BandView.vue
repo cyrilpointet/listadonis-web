@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, onUnmounted } from 'vue';
+import { onBeforeMount, onUnmounted, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRoute, useRouter } from 'vue-router';
 
@@ -16,6 +16,14 @@ import { useUserStore } from '@/stores/user';
 const route = useRoute();
 const router = useRouter();
 const userStore = useUserStore();
+
+enum tabsEnum {
+  ITEMS,
+  MEMBERS,
+  EDIT
+}
+
+const activeTab = ref<tabsEnum>(tabsEnum.ITEMS);
 
 onBeforeMount(() => {
   init();
@@ -44,16 +52,46 @@ async function init() {
       <p>loading</p>
     </div>
     <div v-else class="mb-4">
-      <h1 class="text-xl mb-4">{{ band.name }}</h1>
+      <h1 class="text-xl mb-4 text-center font-bold">{{ band.name }}</h1>
 
-      <BandEditor />
-      <BandDelete />
+      <div class="flex border-b-2">
+        <button
+          @click="activeTab = tabsEnum.ITEMS"
+          class="px-4 py-1 hover:bg-neutral-200 cursor-pointer transition"
+          :class="{ 'border-b-4 border-primary font-bold': activeTab === tabsEnum.ITEMS }"
+        >
+          Items
+        </button>
+        <button
+          @click="activeTab = tabsEnum.MEMBERS"
+          class="px-4 py-1 hover:bg-neutral-200 cursor-pointer transition"
+          :class="{ 'border-b-4 border-primary font-bold': activeTab === tabsEnum.MEMBERS }"
+        >
+          Partage
+        </button>
+        <button
+          @click="activeTab = tabsEnum.EDIT"
+          class="px-4 py-1 hover:bg-neutral-200 cursor-pointer transition"
+          :class="{ 'border-b-4 border-primary font-bold': activeTab === tabsEnum.EDIT }"
+        >
+          Edition
+        </button>
+      </div>
 
-      <MemberList />
-      <MemberAdd />
+      <div v-if="activeTab === tabsEnum.ITEMS">
+        <PostList class="mb-4" />
+        <PostAdd />
+      </div>
 
-      <PostList />
-      <PostAdd />
+      <div v-if="activeTab === tabsEnum.MEMBERS">
+        <MemberList class="mb-8" />
+        <MemberAdd />
+      </div>
+
+      <div v-if="activeTab === tabsEnum.EDIT" class="pt-6">
+        <BandEditor class="mb-8" />
+        <BandDelete />
+      </div>
     </div>
   </Card>
 </template>

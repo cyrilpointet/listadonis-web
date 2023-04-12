@@ -12,5 +12,12 @@ async function deleteBand() {
 </script>
 
 <template>
-  <FormKit type="button" label="Supprimer" input-class="!bg-red-700" @click="deleteBand" />
+  <FormKit
+    type="button"
+    label="Supprimer la liste"
+    input-class="!bg-red-700 !w-full"
+    wrapper-class="w-full"
+    outer-class="w-full"
+    @click="deleteBand"
+  />
 </template>

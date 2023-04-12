@@ -8,10 +8,9 @@ import Card from '@/components/common/Card.vue';
     <Card class="mx-auto max-w-xl">
       <h1 class="text-xl mb-4 text-center">Créer un compte</h1>
       <RegisterForm />
+      <div class="flex justify-center my-4">
+        <RouterLink to="/login" class="underline">J'ai déjà un compte</RouterLink>
+      </div>
     </Card>
-
-    <div class="flex justify-center mt-4">
-      <RouterLink to="/login" class="underline">J'ai déjà un compte ?</RouterLink>
-    </div>
   </div>
 </template>

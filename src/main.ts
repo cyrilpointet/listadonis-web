@@ -22,7 +22,8 @@ app.use(
     config: {
       classes: generateClasses({
         global: {
-          wrapper: '!max-w-full'
+          wrapper: '!max-w-full',
+          inner: 'focus-within:!border-primary focus-within:border focus-within:!shadow-none'
         },
         'family:button': {
           input: '!bg-primary'

@@ -23,11 +23,12 @@ interface Band {
   posts: Post[];
 }
 
-export type UserBand = Omit<Band, 'users'>;
+export type UserBand = Omit<Band, 'users' | 'posts'>;
 
 type UserRootState = {
   user: User | null;
   band: Band | null;
+  message: string | null;
 };
 
 export const useUserStore = defineStore({
@@ -35,12 +36,21 @@ export const useUserStore = defineStore({
   state: () =>
     ({
       user: null,
-      band: null
+      band: null,
+      message: null
     } as UserRootState),
   getters: {
     isLogged: (state) => state.user !== null
   },
   actions: {
+    // Message ----------------------------------------------
+    setMessage(message: string) {
+      this.message = message;
+      setTimeout(() => {
+        this.message = null;
+      }, 3000);
+    },
+    // User -------------------------------------------------
     async refreshUser() {
       const data = (await ApiConsumer.get('/')) as {
         user: User;

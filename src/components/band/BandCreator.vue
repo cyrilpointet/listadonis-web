@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { FormKitIcon } from '@formkit/vue';
 import { reset } from '@formkit/core';
 import { useUserStore } from '@/stores/user';
 import ButtonIcon from '@/components/common/ButtonIcon.vue';

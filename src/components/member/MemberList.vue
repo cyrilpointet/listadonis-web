@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FormKitIcon } from '@formkit/vue';
+import ButtonIcon from '@/components/common/ButtonIcon.vue';
 
 import { storeToRefs } from 'pinia';
 
@@ -22,15 +22,14 @@ async function removeMember(memberId: number) {
 </script>
 
 <template>
-  <h4 class="mb-1">Membres</h4>
-  <div
-    v-for="(user, index) in band.users"
-    :key="index"
-    class="py-2 border-t last:border-b flex items-center"
-  >
-    <p class="flex-1">{{ user.email }}</p>
-    <button @click="removeMember(user.id)" class="p-2 block bg-red-600 rounded">
-      <FormKitIcon icon="trash" class="text-white block w-4 h-4" svg-class="!max-w-full" />
-    </button>
+  <div>
+    <div
+      v-for="(user, index) in band.users"
+      :key="index"
+      class="py-2 border-t last:border-b flex items-center"
+    >
+      <p class="flex-1">{{ user.email }}</p>
+      <ButtonIcon @click="removeMember(user.id)" icon="person_remove" variant="danger" />
+    </div>
   </div>
 </template>

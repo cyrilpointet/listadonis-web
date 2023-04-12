@@ -14,9 +14,9 @@ const bands = userStore.$state.user?.bands || [];
 
 <template>
   <Card>
-    <h1 class="mb-4 text-xl font-bold">Mes listes</h1>
+    <h1 class="mb-4 text-xl font-bold text-center">Mes listes</h1>
 
-    <BandList :bands="bands" class="mb-4" />
+    <BandList :bands="bands" class="mb-8" />
 
     <div class="mb-4">
       <BandCreator class="mb-4" />

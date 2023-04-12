@@ -23,8 +23,8 @@ async function submit(fields): Promise<void> {
   try {
     await userStore.login(fields.email, fields.password);
     router.push('/');
-  } catch (e) {
-    alert(e);
+  } catch {
+    userStore.setMessage('Erreur login');
   }
 }
 </script>
