@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Header from '@/components/common/Header.vue';
+import Alert from '@/components/common/Alert.vue';
 import image from '@/assets/images/shopping.jpg';
 </script>
 
@@ -15,5 +16,6 @@ import image from '@/assets/images/shopping.jpg';
         <RouterView />
       </div>
     </div>
+    <Alert />
   </div>
 </template>

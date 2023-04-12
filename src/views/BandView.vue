@@ -57,21 +57,21 @@ async function init() {
       <div class="flex border-b-2">
         <button
           @click="activeTab = tabsEnum.ITEMS"
-          class="px-4 py-1 hover:bg-neutral-200 cursor-pointer transition"
+          class="px-4 py-1 hover:bg-neutral-100 cursor-pointer transition"
           :class="{ 'border-b-4 border-primary font-bold': activeTab === tabsEnum.ITEMS }"
         >
           Items
         </button>
         <button
           @click="activeTab = tabsEnum.MEMBERS"
-          class="px-4 py-1 hover:bg-neutral-200 cursor-pointer transition"
+          class="px-4 py-1 hover:bg-neutral-100 cursor-pointer transition"
           :class="{ 'border-b-4 border-primary font-bold': activeTab === tabsEnum.MEMBERS }"
         >
           Partage
         </button>
         <button
           @click="activeTab = tabsEnum.EDIT"
-          class="px-4 py-1 hover:bg-neutral-200 cursor-pointer transition"
+          class="px-4 py-1 hover:bg-neutral-100 cursor-pointer transition"
           :class="{ 'border-b-4 border-primary font-bold': activeTab === tabsEnum.EDIT }"
         >
           Edition

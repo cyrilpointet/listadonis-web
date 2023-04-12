@@ -23,8 +23,8 @@ async function submit(fields): Promise<void> {
   try {
     await userStore.register(fields.email, fields.password);
     router.push('/');
-  } catch (e) {
-    alert(e);
+  } catch {
+    userStore.setMessage('Erreur register');
   }
 }
 </script>

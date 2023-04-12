@@ -34,7 +34,7 @@ async function submit(fields) {
         outer-class="flex-1 !mb-0"
         placeholder="email"
       />
-      <ButtonIcon type="submit" icon="add" class="mt-6" />
+      <ButtonIcon type="submit" icon="person_add" class="mt-6" />
     </div>
   </FormKit>
 </template>

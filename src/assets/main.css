@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-button .formkit-icon svg {
-    max-width: none !important;
-    max-height: none !important;
+/* transitions */
+.slide-enter-active,
+.slide-leave-active {
+    transition: all 0.4s ease;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+    opacity: 0;
+    transform: translateY(100%);
 }
