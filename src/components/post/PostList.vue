@@ -12,7 +12,7 @@ async function removePost(postId: number) {
   try {
     await userStore.removePost(postId);
   } catch {
-    alert('error');
+    userStore.setMessage('Une erreur est survenue');
   }
 }
 </script>

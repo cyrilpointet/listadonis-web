@@ -16,7 +16,7 @@ async function removeMember(memberId: number) {
       router.push('/');
     }
   } catch {
-    alert('error');
+    userStore.setMessage('Une erreur est survenue');
   }
 }
 </script>

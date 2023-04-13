@@ -10,7 +10,7 @@ async function submit(fields) {
     await userStore.createBand(fields.name);
     reset('myForm');
   } catch (e) {
-    alert('Error');
+    userStore.setMessage('Une erreur est survenue');
   }
 }
 </script>

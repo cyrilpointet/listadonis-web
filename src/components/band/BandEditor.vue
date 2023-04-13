@@ -12,7 +12,7 @@ async function submit(fields) {
   try {
     await userStore.updateBand(fields.name);
   } catch (e) {
-    alert('Error');
+    userStore.setMessage('Une erreur est survenue');
   }
 }
 </script>
@@ -29,6 +29,10 @@ async function submit(fields) {
           validation="required|length:1,32"
           label="Renommer la liste"
           outer-class="flex-1 !mb-0"
+          :validation-messages="{
+            required: 'Un nom est requis',
+            length: 'Max 32 caractères'
+          }"
         />
         <ButtonIcon type="submit" icon="done" class="mt-6" />
       </div>

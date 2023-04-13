@@ -10,7 +10,7 @@ async function submit(fields) {
     await userStore.addMember(fields.email);
     reset('myForm');
   } catch (e) {
-    alert('Error');
+    userStore.setMessage('Une erreur est survenue');
   }
 }
 </script>
@@ -33,6 +33,9 @@ async function submit(fields) {
         label="Ajouter un membre"
         outer-class="flex-1 !mb-0"
         placeholder="email"
+        :validation-messages="{
+          required: 'Un email est requis'
+        }"
       />
       <ButtonIcon type="submit" icon="person_add" class="mt-6" />
     </div>

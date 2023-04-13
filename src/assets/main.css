@@ -13,3 +13,13 @@
     opacity: 0;
     transform: translateY(100%);
 }
+
+/* Animations */
+@keyframes load {
+    50% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: -156;
+    }
+}

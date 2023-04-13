@@ -10,6 +10,7 @@ import MemberAdd from '@/components/member/MemberAdd.vue';
 import PostList from '@/components/post/PostList.vue';
 import PostAdd from '@/components/post/PostAdd.vue';
 import Card from '@/components/common/Card.vue';
+import Loader from '@/components/common/Loader.vue';
 
 import { useUserStore } from '@/stores/user';
 
@@ -48,8 +49,8 @@ async function init() {
 
 <template>
   <Card>
-    <div v-if="!userStore.$state.band">
-      <p>loading</p>
+    <div v-if="!userStore.$state.band" class="flex justify-center">
+      <Loader class="w-20" />
     </div>
     <div v-else class="mb-4">
       <h1 class="text-xl mb-4 text-center font-bold">{{ band.name }}</h1>

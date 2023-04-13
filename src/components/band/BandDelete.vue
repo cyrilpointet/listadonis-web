@@ -6,8 +6,12 @@ const userStore = useUserStore();
 const router = useRouter();
 
 async function deleteBand() {
-  await userStore.deleteBand();
-  router.push({ name: 'home' });
+  try {
+    await userStore.deleteBand();
+    router.push({ name: 'home' });
+  } catch {
+    userStore.setMessage('Une erreur est survenue');
+  }
 }
 </script>
 

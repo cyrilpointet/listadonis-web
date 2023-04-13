@@ -10,7 +10,7 @@ async function submit(fields) {
     await userStore.addPost(fields.item);
     reset('myForm');
   } catch (e) {
-    alert('Error');
+    userStore.setMessage('Une erreur est survenue');
   }
 }
 </script>
@@ -32,6 +32,9 @@ async function submit(fields) {
         validation="required"
         outer-class="flex-1 !mb-0"
         placeholder="Produit"
+        :validation-messages="{
+          required: 'Un nom est requis'
+        }"
       />
       <ButtonIcon type="submit" icon="add" class="mt-1" />
     </div>
