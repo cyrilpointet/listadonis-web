@@ -41,7 +41,7 @@ async function init() {
     const id = route.params.id;
     await userStore.getBand(parseInt(id));
   } catch {
-    alert('Error');
+    userStore.setMessage('Une erreur est survenue');
     router.push({ name: 'home' });
   }
 }
