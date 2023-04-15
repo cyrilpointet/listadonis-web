@@ -79,20 +79,22 @@ async function init() {
         </button>
       </div>
 
-      <div v-if="activeTab === tabsEnum.ITEMS">
-        <PostList class="mb-4" />
-        <PostAdd />
-      </div>
+      <Transition name="fade" mode="out-in">
+        <div v-if="activeTab === tabsEnum.ITEMS">
+          <PostList class="mb-4" />
+          <PostAdd />
+        </div>
 
-      <div v-if="activeTab === tabsEnum.MEMBERS">
-        <MemberList class="mb-8" />
-        <MemberAdd />
-      </div>
+        <div v-else-if="activeTab === tabsEnum.MEMBERS">
+          <MemberList class="mb-8" />
+          <MemberAdd />
+        </div>
 
-      <div v-if="activeTab === tabsEnum.EDIT" class="pt-6">
-        <BandEditor class="mb-8" />
-        <BandDelete />
-      </div>
+        <div v-else-if="activeTab === tabsEnum.EDIT" class="pt-6">
+          <BandEditor class="mb-8" />
+          <BandDelete />
+        </div>
+      </Transition>
     </div>
   </Card>
 </template>

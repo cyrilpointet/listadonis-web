@@ -19,10 +19,10 @@ async function removePost(postId: number) {
 
 <template>
   <p v-if="band.posts.length < 1" class="my-4 italic">Aucun item dans la list</p>
-  <div v-else>
-    <div v-for="(post, index) in band.posts" :key="index" class="py-2 border-b flex items-center">
+  <TransitionGroup v-else name="list" tag="div" class="relative">
+    <div v-for="post in band.posts" :key="post.id" class="py-2 border-b flex items-center">
       <p class="flex-1">{{ post.title }}</p>
       <ButtonIcon @click="removePost(post.id)" icon="delete" variant="danger" />
     </div>
-  </div>
+  </TransitionGroup>
 </template>

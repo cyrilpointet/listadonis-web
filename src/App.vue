@@ -13,7 +13,11 @@ import image from '@/assets/images/shopping.jpg';
     <div class="relative">
       <Header class="mb-4" />
       <div class="container mx-auto px-2 sm:px-0 flex-1 mb-4">
-        <RouterView />
+        <RouterView v-slot="{ Component }">
+          <Transition mode="out-in" name="rotate">
+            <component :is="Component" />
+          </Transition>
+        </RouterView>
       </div>
     </div>
     <Alert />
